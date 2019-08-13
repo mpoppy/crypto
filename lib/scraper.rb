@@ -5,21 +5,21 @@ require 'pry'
 class Scraper
 
   def get_page
-    Nokogiri::HTML(open("https://www.coinbase.com/price")) 
+    Nokogiri::HTML(open("https://www.coinbase.com/price"))
   end
 
-  def price_scrape
-    crypto_info = self.get_page.css("tbody.AssetTable__AssetTableBody-sc-3hlimn-0 tr")
-    crypto_info.each do |crypto|
-      binding.pry
-      puts crypto.css("h4.Header__StyledHeader-sc-1q6y56a-0 gEArVu TextElement__Spacer-sc-18l8wi5-0 hpeTzd").text
+  def price_scraper
+      crypto_page = self.get_page.css("tbody.AssetTable__AssetTableBody-sc-3hlimn-0 tr")
+      crypto_page.each do |crypto|
+            name = crypto.search("h4.Header__StyledHeader-sc-1q6y56a-0")[1].text
+            symbol = crypto.search("h4.Header__StyledHeader-sc-1q6y56a-0")[2].text
+            puts "#{name}: #{symbol}"
+      end
     end
-
-  end
 
   def assign_crypto
 
   end
 end
 
-Scraper.new.price_scrape
+Scraper.new.price_scraper
