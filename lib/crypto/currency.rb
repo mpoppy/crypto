@@ -1,3 +1,4 @@
+require 'pry'
 
 class Currency
   :name, :symbol
@@ -10,9 +11,10 @@ class Currency
 
   def create_from_url
     properties = Scraper.new.price_scraper
+    binding.pry
     properties.each do |currency|
-      @name =
-      @symbol =
+      # @name = currency[name]
+      # @symbol =
     end
   end
 
@@ -21,3 +23,5 @@ class Currency
   end
 
 end
+
+Currency.new.create_from_url

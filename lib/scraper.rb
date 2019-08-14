@@ -14,7 +14,6 @@ class Scraper
       crypto_page.each_with_index do |crypto, index|
           name = crypto.search("h4.Header__StyledHeader-sc-1q6y56a-0")[1].text unless index == 16
           symbol = crypto.search("h4.Header__StyledHeader-sc-1q6y56a-0")[2].text unless index == 16
-          puts "#{index + 1}.#{name}: #{symbol}"
           cryptos << {name: name, symbol: symbol} unless index == 16
         end
         binding.pry
