@@ -18,6 +18,9 @@ class CLI
     DOC
   end
 
+
+
+
   def menu
     puts "Enter the number for which you would like to get more inforation on."
     input = gets.strip

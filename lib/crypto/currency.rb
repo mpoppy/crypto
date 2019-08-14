@@ -1,27 +1,27 @@
 require 'pry'
 
 class Currency
-  :name, :symbol
+  attr_accessor :name, :symbol
 
-  @all = {}
+  @@all = []
 
-  def initialize
+  def initialize(crypto_array)
     @@all << self
   end
 
-  def create_from_url
-    properties = Scraper.new.price_scraper
-    binding.pry
-    properties.each do |currency|
-      # @name = currency[name]
-      # @symbol =
+  def scrape_crypto
+    array = Scraper.new.price_scraper #scrapes and then gives array with hashes of data
+    array.each do |currency|
+      Currency.new #for each item in the hash
+      self.name = currency[:name]
+      self.symbol = currency[:symbol]
+      binding.pry
+      @@all << self
     end
   end
 
   def self.all
-    @all
+    @@all
   end
 
 end
-
-Currency.new.create_from_url

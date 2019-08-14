@@ -16,8 +16,7 @@ class Scraper
           symbol = crypto.search("h4.Header__StyledHeader-sc-1q6y56a-0")[2].text unless index == 16
           cryptos << {name: name, symbol: symbol} unless index == 16
         end
-        binding.pry
-        cryptos
+        cryptos #returns an array with hashes for each crypto
     end
 
   def assign_crypto
@@ -25,4 +24,4 @@ class Scraper
   end
 end
 
-Scraper.new.price_scraper
+# Scraper.new.price_scraper
