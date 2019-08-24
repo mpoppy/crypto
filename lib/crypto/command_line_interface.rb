@@ -9,21 +9,20 @@ class CLI
   end
 
   def list_crypto
-    puts "Today's crypto prices."
-    puts <<-DOC
-      1. Bitcoin BTC $10K
-      2. Ethereum Eth $200
-      3. Litecoin Ltc $100
-      4. Ripple Xrp $.32
-    DOC
+    puts "Today's Top Cryptocurrencies:"
+    @crypto_list = Currency.new.list
+
+    @crypto_list.each_with_index do |c, i|
+      puts "#{i + 1}. #{c.name} - #{c.symbol}"
+    end
   end
 
 
 
 
   def menu
-    puts "Enter the number for which you would like to get more inforation on."
-    input = gets.strip
+    puts "Enter the name or the symbol for which you would like to get more information on."
+    input = gets.strip.downcase
     case input
     when "1"
       puts "more information on crypto 1"

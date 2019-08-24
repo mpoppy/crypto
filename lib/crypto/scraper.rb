@@ -19,9 +19,6 @@ class Scraper
         cryptos #returns an array with hashes for each crypto
     end
 
-  def assign_crypto
-
-  end
 end
 
 # Scraper.new.price_scraper
