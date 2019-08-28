@@ -36,7 +36,4 @@ class Scraper
       crypto_details
     end
 
-
 end
-
-Scraper.new.detail_scraper

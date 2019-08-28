@@ -10,9 +10,9 @@ class CLI
 
   def list_crypto
     puts "Today's Top Cryptocurrencies:"
-    @crypto_list = Currency.new.list
-
-    @crypto_list.each_with_index do |c, i|
+    crypto_array = Scraper.new.price_scraper
+    Currency.create_from_collection(crypto_array)
+    Currency.all.each_with_index do |c, i|
       puts "#{i + 1}. #{c.name} - #{c.symbol}"
     end
   end
