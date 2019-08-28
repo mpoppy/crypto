@@ -2,6 +2,7 @@ require 'pry'
 
 class Currency
   attr_accessor :name, :symbol
+  #add url as attribute accessor?
 
   def list
     self.scrape_crypto
