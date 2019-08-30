@@ -1,10 +1,10 @@
 # Crypto
 
-Welcome to my Crypto Price gem scraper!
+Welcome to my Crypto Gem Scraper!
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/crypto`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to my first gem built as part of my Flatiron School online bootcamp! In this gem, you will be scrape information on the top cryptocurrencies from Coinbase.com. For each currency, you can then go 1 level deeper and view additional information on the currency including market cap, all-time high, and circulating supply.
 
-TODO: Delete this and the text above, and describe your gem
+The Ruby code in the file `lib/crypto` represents my object classes for my controller, my currency class, and my scraper class. To experiment with that code, run `bin/console` for an interactive prompt.
 
 ## Installation
 
@@ -24,7 +24,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Run 'bin/crypto' to execute the gem.
+2. The application will scrape the cryptocurrencies listed on Coinbase.com/price
+3. The CLI will prompt the user to enter a number corresponding to the original list to find more details.
+4. The application will scrape the details page of that corresponding currency and display additional details in the CLI.
+5. The application loops and will ask the user for an additional currency until they want to 'exit' the program by typing 'exit'.
 
 ## Development
 
