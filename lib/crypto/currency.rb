@@ -1,8 +1,8 @@
 require 'pry'
 
 class Currency
-  attr_accessor :name, :symbol, :market_cap, :circulating_supply, :all_time_high
-  #add url as attribute accessor?
+  attr_accessor :name, :symbol, :url, :market_cap, :circulating_supply, :all_time_high
+
 
   @@all = []
 

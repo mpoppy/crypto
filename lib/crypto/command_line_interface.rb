@@ -19,7 +19,7 @@ class CLI
 
   def add_attributes_to_students
     Currency.all.each do |currency|
-      attributes = Scraper.new.detail_scraper(currency.profile_url)
+      attributes = Scraper.new.detail_scraper(currency.url)
       currency.add_crypto_attributes(attributes)
     end
   end
@@ -31,7 +31,6 @@ class CLI
     case input
     when "1"
       puts "more information on crypto 1"
-
     when "2"
       puts "more information on crypto 2"
     when "3"
