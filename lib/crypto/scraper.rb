@@ -20,18 +20,20 @@ class Scraper
         cryptos
     end
 
-    def get_crypto_detail
-      Nokogiri::HTML(open("https://www.coinbase.com/price/ethereum"))
+    def get_crypto_detail(url)
+      Nokogiri::HTML(open("https://www.coinbase.com#{url}"))
     end
 
-    def detail_scraper
-      crypto_details = []
-      doc = self.get_crypto_detail
+    def detail_scraper(url)
+      crypto_details = {}
+      doc = self.get_crypto_detail(url)
       info = doc.search("h6.Header__StyledHeader-sc-1q6y56a-0 span")
       market_cap = info[0].text
       circulating_supply = info[2].text
       all_time_high = info[4].text
-      crypto_details << {market_cap: market_cap, circulating_supply: circulating_supply, all_time_high: all_time_high}
+      crypto_details[:market_cap] = market_cap
+      crypto_details[:circulating_supply] = circulating_supply
+      crypto_details[:all_time_high] = all_time_high
       crypto_details
     end
 

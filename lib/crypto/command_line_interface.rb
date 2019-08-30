@@ -5,6 +5,7 @@ class CLI
 
   def call
     list_crypto
+    add_attributes_to_crypto
     menu
   end
 
@@ -17,9 +18,9 @@ class CLI
     end
   end
 
-  def add_attributes_to_students
+  def add_attributes_to_crypto
     Currency.all.each do |currency|
-      attributes = Scraper.new.detail_scraper(currency.url)
+      attributes = Scraper.new.detail_scraper(currency.url) #not adding to base url?
       currency.add_crypto_attributes(attributes)
     end
   end

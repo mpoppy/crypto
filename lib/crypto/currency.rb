@@ -20,8 +20,9 @@ class Currency
   end
 
   def add_crypto_attributes(attributes_hash)
-    attributes_hash.each do |attr, value|
-      self.send("#{attr}=", value)
+    attributes_hash.each do |attribute, value|
+      binding.pry
+      self.send("#{attribute}=", value)
     end
     self
   end
