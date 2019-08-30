@@ -4,8 +4,9 @@
 class CLI
 
   def call
-    list_crypto
+    puts "Today's Top Cryptocurrencies:"
     add_attributes_to_crypto
+    list_crypto
     menu
   end
 
@@ -20,24 +21,32 @@ class CLI
 
   def add_attributes_to_crypto
     Currency.all.each do |currency|
-      attributes = Scraper.new.detail_scraper(currency.url) #not adding to base url?
+      attributes = Scraper.new.detail_scraper(currency.url)
       currency.add_crypto_attributes(attributes)
     end
   end
 
 
   def menu
-    puts "Enter the name or the symbol for which you would like to get more information on."
-    input = gets.strip.downcase
-    case input
-    when "1"
-      puts "more information on crypto 1"
-    when "2"
-      puts "more information on crypto 2"
-    when "3"
-      puts "more information on crypto 3"
-    when "4"
-      puts "more information on crypto 4"
+    puts "Enter the number for the cryptocurrency for which you would like to get more information on."
+    input = gets.strip
+    if input != "exit"
+      input = input.to_i
+      Currency.all.select.with_index do |c, i|
+        if input - 1 == i
+          puts <<-DOC
+          You have requested more information on #{input}: #{c.name}
+          Symbol: #{c.symbol}
+          Market cap: #{c.market_cap}
+          Circulating supply: #{c.circulating_supply}
+          All-time high: #{c.all_time_high}
+          DOC
+        end
+      end
+      menu
+    else
+      puts "Exiting program, have a good day!"
     end
   end
+
 end
