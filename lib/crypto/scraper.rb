@@ -30,9 +30,7 @@ class Scraper
       market_cap = info[0].text
       circulating_supply = info[2].text
       all_time_high = info[4].text
-      crypto_details << market_cap
-      crypto_details << circulating_supply
-      crypto_details << all_time_high
+      crypto_details << {market_cap: market_cap, circulating_supply: circulating_supply, all_time_high: all_time_high}
       crypto_details
     end
 
