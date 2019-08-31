@@ -14,8 +14,9 @@ class Scraper
       crypto_page.each_with_index do |crypto, index|
           name = crypto.search("h4.Header__StyledHeader-sc-1q6y56a-0")[1].text unless index == 16
           symbol = crypto.search("h4.Header__StyledHeader-sc-1q6y56a-0")[2].text unless index == 16
+          price = crypto.search("h4.Header__StyledHeader-sc-1q6y56a-0")[3].text unless index == 16
           url = crypto.search("td.AssetTableRow__Td-sc-1e35vph-1 a").attr("href").text unless index == 16
-          cryptos << {name: name, symbol: symbol, url: url} unless index == 16
+          cryptos << {name: name, symbol: symbol, price: price, url: url} unless index == 16
         end
         cryptos
     end
@@ -31,9 +32,11 @@ class Scraper
       market_cap = info[0].text
       circulating_supply = info[2].text
       all_time_high = info[4].text
+      bio = doc.search("div.AssetInfo__DescriptionText-sc-4v99na-2 p").text
       crypto_details[:market_cap] = market_cap
       crypto_details[:circulating_supply] = circulating_supply
       crypto_details[:all_time_high] = all_time_high
+      crypto_details[:bio] = bio
       crypto_details
     end
 
