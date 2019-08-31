@@ -12,7 +12,7 @@ class CLI
       add_attributes_to_crypto
       menu
     else
-      breakd
+      puts "Goodbye!"
     end
   end
 
