@@ -25,10 +25,10 @@ Or install it yourself as:
 ## Usage
 
 1. Run 'bin/crypto' to execute the gem.
-2. The application will scrape the cryptocurrencies listed on Coinbase.com/price
+2. The program will scrape the cryptocurrencies listed on Coinbase.com/price
 3. The CLI will prompt the user to enter a number corresponding to the original list to find more details.
-4. The application will scrape the details page of that corresponding currency and display additional details in the CLI.
-5. The application loops and will ask the user for an additional currency until they want to 'exit' the program by typing 'exit'.
+4. The program will scrape the details page of that corresponding currency and display additional details in the CLI.
+5. The program loops and will ask the user for an additional currency until they want to 'exit' the program by typing 'exit'.
 
 ## Development
 
