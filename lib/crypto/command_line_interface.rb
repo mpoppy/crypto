@@ -5,27 +5,27 @@ class CLI
 
   def call
     puts "Today's Top Cryptocurrencies:"
-    list_crypto
+    list
     puts "Would you like to get more information on a specific cryptocurrency? Y/N"
     input = gets.strip.downcase
     if input == "yes" || input == "y"
-      add_attributes_to_crypto
+      add_attributes
       menu
     else
       puts "Goodbye!"
     end
   end
 
-  def list_crypto
+  def list
     crypto_array = Scraper.new.price_scraper
-    Currency.create_from_collection(crypto_array)
+    Currency.create_from_set(crypto_array)
     Currency.all.each_with_index do |c, i|
       puts "#{i + 1}. #{c.name} - #{c.symbol} - price:#{c.price}"
       sleep 0.25
     end
   end
 
-  def add_attributes_to_crypto
+  def add_attributes
     puts "Downloading Details, one moment.."
     Currency.all.each do |currency|
       attributes = Scraper.new.detail_scraper(currency.url)
@@ -35,9 +35,7 @@ class CLI
 
 
   def menu
-    puts "Enter the number for the cryptocurrency for which you would like to get more information on. Type 'exit' to leave the program. "
-    #to relist cryptos type list
-    #dont allow numb
+    puts "Enter the number (1-30) for the cryptocurrency for which you would like to get more information on. Type 'exit' to leave the program. "
     input = gets.strip.downcase
     if input != "exit"
       input = input.to_i - 1

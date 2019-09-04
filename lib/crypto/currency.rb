@@ -13,7 +13,7 @@ class Currency
     @@all << self
   end
 
-  def self.create_from_collection(crypto_array)
+  def self.create_from_set(crypto_array)
     crypto_array.each do |crypto_hash|
       Currency.new(crypto_hash)
     end
